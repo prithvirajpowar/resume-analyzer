@@ -11,10 +11,12 @@ pipeline {
         stage('Build Spring Boot Application') {
             steps {
                 script {
-                    sh 'mvn clean package -DskipTests'
+                    sh 'ls -la'  // Check files in workspace
+                    sh 'cd backend/resume-analyzer/demo && mvn clean package -DskipTests'
                 }
             }
         }
+    }
 
         stage('Build Docker Image') {
             steps {
